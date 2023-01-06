@@ -1,5 +1,6 @@
 #include "typewise-alert.h"
 #include <stdio.h>
+void setLimitsBasedOnCoolingType(CoolingType coolingType, int &limits);
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
@@ -22,8 +23,8 @@ BreachType classifyTemperatureBreach(
 
 void setLimitsBasedOnCoolingType(CoolingType coolingType, int &limits)
 {
-    limits[0] = 0;
-    limits[1] = (coolingType == PASSIVE_COOLING) ? 35 : ((coolingType == HI_ACTIVE_COOLING) ?  45 : 40 );
+    (limits + 0) = 0;
+    (limits + 1) = (coolingType == PASSIVE_COOLING) ? 35 : ((coolingType == HI_ACTIVE_COOLING) ?  45 : 40 );
 }
 
 void checkAndAlert(
