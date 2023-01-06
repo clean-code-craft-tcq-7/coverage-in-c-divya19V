@@ -2,7 +2,7 @@
 #include <stdio.h>
 #define LOWERLIMIT 0
 #define UPPERLIMIT 1
-void setLimitsBasedOnCoolingType(CoolingType coolingType, int limits[]);
+void setLimitsBasedOnCoolingType(CoolingType coolingType, int limits[2]);
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
@@ -23,7 +23,7 @@ BreachType classifyTemperatureBreach(
   return inferBreach(temperatureInC, limits[0], limits[1]); 
 }
 
-void setLimitsBasedOnCoolingType(CoolingType coolingType, int limits[])
+void setLimitsBasedOnCoolingType(CoolingType coolingType, int limits[2])
 {
     (limits + LOWERLIMIT) = 0;
     (limits + UPPERLIMIT) = (coolingType == PASSIVE_COOLING) ? 35 : ((coolingType == HI_ACTIVE_COOLING) ?  45 : 40 );
