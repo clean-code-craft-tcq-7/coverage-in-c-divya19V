@@ -23,7 +23,7 @@ BreachType classifyTemperatureBreach(
   return inferBreach(temperatureInC, limits[0], limits[1]); 
 }
 
-void setLimitsBasedOnCoolingType(CoolingType coolingType, int *limits)
+void setLimitsBasedOnCoolingType(CoolingType coolingType, int limits[])
 {
     (limits + LOWERLIMIT) = 0;
     (limits + UPPERLIMIT) = (coolingType == PASSIVE_COOLING) ? 35 : ((coolingType == HI_ACTIVE_COOLING) ?  45 : 40 );
