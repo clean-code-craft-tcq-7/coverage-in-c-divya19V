@@ -2,7 +2,7 @@
 #include <stdio.h>
 #define LOWERLIMIT 0
 #define UPPERLIMIT 1
-void setLimitsBasedOnCoolingType(CoolingType coolingType, int *limits);
+void setLimitsBasedOnCoolingType(CoolingType coolingType, int limits[]);
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
