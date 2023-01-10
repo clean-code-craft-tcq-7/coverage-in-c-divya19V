@@ -68,6 +68,4 @@ void sendToEmail(BreachType breachType) {
       printf("To: %s\n", recepient);
       printf("Hi, the temperature is too %s\n", printBreachType);
     }
-    
-  }
 }
