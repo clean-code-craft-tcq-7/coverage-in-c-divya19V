@@ -1,7 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-// Done with test cases
+//Testable function
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
     return TOO_LOW;
@@ -12,7 +12,7 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   return NORMAL;
 }
 
-//Done with test cases
+//Testable function
 BreachType classifyTemperatureBreach(
   CoolingType coolingType, double temperatureInC) {
 
@@ -22,7 +22,7 @@ BreachType classifyTemperatureBreach(
   return inferBreach(temperatureInC, 0, upperLimit); 
 }
 
-//Done with test cases
+//Testable function
 int setLimitsBasedOnCoolingType(CoolingType coolingType)
 {
     int upperLimit = (coolingType == PASSIVE_COOLING) ? 35 : ((coolingType == HI_ACTIVE_COOLING) ?  45 : 40 );
@@ -52,20 +52,10 @@ void sendToController(BreachType breachType) {
 //Not testable function
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
-  /*switch(breachType) {
-    case TOO_LOW:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too low\n");
-      break;
-    case TOO_HIGH:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too high\n");
-      break;
-    default: 
-      break;*/
-    if (breachType != NORMAL) {
-      const char* printBreachType = (breachType == TOO_LOW) ? "low" : "high";
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too %s\n", printBreachType);
-    }
+
+  if (breachType != NORMAL) {
+     const char* printBreachType = (breachType == TOO_LOW) ? "low" : "high";
+     printf("To: %s\n", recepient);
+     printf("Hi, the temperature is too %s\n", printBreachType);
+   }
 }
