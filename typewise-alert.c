@@ -29,8 +29,7 @@ int setLimitsBasedOnCoolingType(CoolingType coolingType)
     return upperLimit;
 }
 
-void checkAndAlert(
-    AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
   BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
 
@@ -44,14 +43,16 @@ void checkAndAlert(
   }
 }
 
+//Not testable function
 void sendToController(BreachType breachType) {
   const unsigned short header = 0xfeed;
   printf("%x : %x\n", header, breachType);
 }
 
+//Not testable function
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
-  switch(breachType) {
+  /*switch(breachType) {
     case TOO_LOW:
       printf("To: %s\n", recepient);
       printf("Hi, the temperature is too low\n");
@@ -60,7 +61,13 @@ void sendToEmail(BreachType breachType) {
       printf("To: %s\n", recepient);
       printf("Hi, the temperature is too high\n");
       break;
-    case NORMAL:
-      break;
+    default: 
+      break;*/
+    if (breachType != NORMAL) {
+      const char* printBreachType = (breachType == TOO_LOW) ? "low" : "high";
+      printf("To: %s\n", recepient);
+      printf("Hi, the temperature is too %s\n", printBreachType);
+    }
+    
   }
 }
