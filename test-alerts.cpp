@@ -11,3 +11,13 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(30, 20, 30) == NORMAL);
   REQUIRE(inferBreach(-10.0, 100.2, 1000.67) == TOO_LOW);
 }
+
+TEST_CASE("infers the breach according to cooling type") {
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING, 12) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING, 40) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING, 50) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING, 20) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING, 30) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING, -10.0) == TOO_LOW);
+}
+
