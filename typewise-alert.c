@@ -4,6 +4,7 @@
 //#define UPPERLIMIT 1
 void setLimitsBasedOnCoolingType(CoolingType, int*,int*);
 
+// Done with test cases
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
     return TOO_LOW;
@@ -14,8 +15,9 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   return NORMAL;
 }
 
+//Done with test cases
 BreachType classifyTemperatureBreach(
-    CoolingType coolingType, double temperatureInC) {
+  CoolingType coolingType, double temperatureInC) {
  
   int limits[2] = {0,0};
   setLimitsBasedOnCoolingType(coolingType, limits, (limits+1));
